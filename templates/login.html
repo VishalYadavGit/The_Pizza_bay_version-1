@@ -20,10 +20,10 @@
                 <form method="post">
                     {% csrf_token %}
                     <div class="input-group mb-3">
-                        <input type="text" name="username" class="form-control input_user" value="" placeholder="username">
+                        <input type="text" name="username" required="required" class="form-control input_user" value="" placeholder="username">
                     </div>
                     <div class="input-group mb-2">
-                        <input type="password" name="password" class="form-control input_pass" value="" placeholder="password">
+                        <input type="password" name="password" required="required" class="form-control input_pass" value="" placeholder="password">
                     </div>
                 
                         <div class="d-flex justify-content-center mt-3 login_container">
