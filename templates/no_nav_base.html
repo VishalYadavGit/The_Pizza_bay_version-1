@@ -136,7 +136,7 @@
         
       }
       .bodybox{
-        height:80%;
+        height:auto;
         width: 100%;
         display: flex;
         justify-content: center;
@@ -146,6 +146,8 @@
       }
       .formmainbody{
         margin-top:5%;
+        width: 50%;
+        min-width: 350px;
         background-color: rgb(0, 0, 0);
         height: 70%;
         border-radius: 50px;
@@ -167,8 +169,14 @@
 
 
             {% endblock body %}
-            <footer style="height: 8%;background-color: black">
+            <footer style="height: auto;background-color: black;">
               <h3 style="background-color: black;color: white;text-align: center;font-family: Georgia, 'Times New Roman', Times, serif;font-size: small;">All Right reserved &copy; Xegend</h3>
+              <form class="subscribe" style="margin-top:2%;text-align:center" method="post">
+                {% csrf_token %}
+                <input type="email" class="w-50 h-50 bg-warning-subtle" name="mail" id="mail">
+                <button type="submit" style="background-color: #ff6505;" class="h-50 Fonty"><a style="text-decoration: none;color: black;" href="takemail">Subscribe</a></button>
+                
+            </form>
             </footer>
           </div>
         </div>

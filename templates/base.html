@@ -248,9 +248,14 @@
             
             
             {% endblock body %}
-            <footer style="height: 50px;background-color: black">
+            <footer style="height: auto;background-color: black">
               <h3 style="background-color: black;color: white;text-align: center;font-family: Georgia, 'Times New Roman', Times, serif;font-size: small;">All Right reserved &copy; Xegend</h3>
-              </div>
+              <form class="subscribe" style="margin-top:2%" method="post">
+                {% csrf_token %}
+                <input type="email" class="w-50 h-50 bg-warning-subtle" name="mail" id="mail">
+                <button type="submit" style="background-color: #ff6505;" class="h-50 Fonty"><a style="text-decoration: none;color: black;" href="takemail">Subscribe</a></button>
+                
+            </form>
             </footer>
           </div>
         </div>
