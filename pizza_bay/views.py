@@ -70,15 +70,17 @@ def register_page(request):
     return render(request,'register.html')
 
 def add_cart(request,pizza_uid):
-    user=request.user
-    pizza_obj=Pizza.objects.get(uid=pizza_uid)
-    cart , _ =Cart.objects.get_or_create(user=user, is_paid=False)
+    if request.user.is_authenticated:
+        user=request.user
+        pizza_obj=Pizza.objects.get(uid=pizza_uid)
+        cart , _ =Cart.objects.get_or_create(user=user, is_paid=False)
 
-    cart_items=CartItems.objects.create(
-        cart=cart,
-        pizza=pizza_obj
-    )
-    return redirect('/')
+        cart_items=CartItems.objects.create(
+            cart=cart,
+            pizza=pizza_obj
+        )
+        return redirect('/')
+    return redirect('login')
 
 def cart(request):
     cart=Cart.objects.get(is_paid=False,user=request.user)
