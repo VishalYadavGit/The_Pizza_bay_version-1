@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block body %}
+    <div class="contactbody">
+        <div class="mainbox">
+            <form class="subscribe" style="margin-top:7%" method="post">
+                {% csrf_token %}
+                <input type="email" class="w-50 h-100 bg-warning-subtle" name="mail" id="mail">
+                <button type="submit" style="background-color: #ff6505;" class="h-100 Fonty"><a style="text-decoration: none;color: black;" href="takemail">Subscribe</a></button>
+            </form>
+            <div class="continfo">
+                <h1 style="margin-top: 10px;">Why to Subscribe our newsletter?</h1>
+               <p  style="width: 70%;"> Sign up for Pizza Bay's newsletter today at thepizzabay@gmail.com, and unlock a world of cheesy delights right in your inbox! By subscribing, you'll gain access to exclusive pizza promotions, mouthwatering deals, and the latest updates on our scrumptious menu offerings. Be the first to know about limited-time discounts, special pizza creations, and exciting contests. Plus, our newsletter is your passport to a pizza lover's paradise, where you'll receive tips, tricks, and delicious recipes to enhance your pizza experience. Don't miss out on the chance to elevate your pizza game – join the Pizza Bay newsletter community now!</p>
+            </div>
+        </div>
+    </div>
+
+{% endblock body %}

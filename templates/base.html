@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock title %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="shortcut icon" href="https://i.ibb.co/CMNXMdf/p-zzaa.png" type="image/x-icon">
+    <style>
+      html,body{
+        height: 100%;
+        
+      }
+      /* width */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: #ff6505;
+      }
+
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: #ff6505;
+      }
+      .navbar{
+        padding:0 10px;
+        height:12%;
+        background-color: bisque;
+        position: sticky;
+        top: 0;
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+        z-index: 5;
+      }
+      a{
+        height: 100%;
+      }
+      .logo{
+        height: 100%;
+        width: 100%;     
+      }
+      .navli{
+        margin: 0 10px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-weight: 600;
+      }
+      .imgcrau{
+        height: 82%;
+      }
+      .poster{
+        background: url('https://images4.alphacoders.com/276/276908.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 88%;
+      }
+      .info{
+        height: auto;
+        background-color: orangered;
+        width: 100%;
+        padding: 0% 0%;
+      }
+      .heading{
+        /* padding-top:20px; */
+        text-align: center;
+        font-weight: bolder;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        letter-spacing: 3px;
+        /* text-decoration: underline; */
+        height: 20%;
+        margin-bottom: 20px;
+
+
+      }
+      .content{
+        width: 100%;
+        padding-bottom:50px;
+        display: grid;
+        justify-content: space-evenly;
+        grid-column-gap:10px ;
+          
+      }
+      .ordernow{
+        position: absolute;
+        bottom: 10px;
+        height: 10%;
+        background-color: #ff6505;
+      }
+      .cardpad{
+        overflow: auto;
+        margin: 5px 0px;
+      }
+      .card{
+        width: 300px;
+      }
+      .card-body{
+        background-color: #393939;
+        color: white;
+        width: 100%;
+        height: 250px;
+        border-radius:0 0 15px 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+
+      }
+    
+      .navbar-collapse{
+        background-color:#ffe4c4;
+      }
+      .card{
+        margin-bottom:20px ;
+        height: auto;
+        border-radius: 15px;
+      }
+      @media screen and (min-width: 40rem) {
+      .content {
+        display: flex;
+              }
+
+        }
+
+      .cart{
+        position:fixed;
+        bottom: 30px;
+        right: 23px;
+        background-color: white;
+        border-radius: 50%;
+        height: 80px;
+        width: 80px;
+        
+      }
+      .cartindi{
+        width:90%;
+        background-color:#ff6505;
+        display: flex;
+        padding: 10px;
+        margin-bottom: 5px;
+        height: 20%;
+        min-width:350px;
+        justify-content:space-evenly;
+        border-radius: 20px;
+        border:1px solid black;
+      }
+      .cartlist{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px;
+        background-color:#fce5d7;
+      }
+      .cartimg{
+        width: 15%;
+      }
+      .cartadj{
+        min-width: 70px;
+        font-size: 100%;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        width:16% ;
+      }
+      .cartinfo{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 100%;
+        width: 100%;
+      }
+      .Fonty{
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        
+      }
+      .aboutbox{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 50%;
+        margin: auto;
+      }
+      .bord{
+        border: 1px solid black;
+      }
+      .contactbody{
+        background: url(https://c0.wallpaperflare.com/preview/565/228/846/japanese-japan-restaurant-culture.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+      
+         height: auto;
+         min-height: 100%;
+      }
+      .mainbox{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+      }
+      .subscribe{
+        height:60px;
+        width: 100%;
+        display: flex;
+        justify-content:center;
+      }
+      .continfo{
+        width: 90%;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: x-large;
+        background: rgb(252, 229, 215);
+        display: flex;
+        flex-direction: column;
+       align-items: center;
+        margin-top: 5%;
+        border-radius: 20px;
+        height: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <a class="navbar-brand" href="/"><img class="logo" src="https://i.ibb.co/CMNXMdf/p-zzaa.png" alt=""></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link navli" href="/">Home</a>
+          <!-- <a class="nav-item nav-link navli" href="about">About Us</a> -->
+          <a class="nav-item nav-link navli" href="order">About Us</a>
+          <a class="nav-item nav-link navli" href="contact">Contact</a>
+          {% if request.user.is_authenticated %}
+          <a class="nav-item nav-link navli" href="{% url 'logout' %}">Logout ({{request.user}})</a>
+          {% else %}
+          <a class="nav-item nav-link navli" href="{% url 'login' %}">Login</a>
+          <a class="nav-item nav-link navli" href="{% url 'register' %}">Register</a>
+
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+            {% block body %}
+            
+            
+            {% endblock body %}
+            <footer style="height: 50px;background-color: black">
+              <h3 style="background-color: black;color: white;text-align: center;font-family: Georgia, 'Times New Roman', Times, serif;font-size: small;">All Right reserved &copy; Xegend</h3>
+              </div>
+            </footer>
+          </div>
+        </div>
+      </nav>
+    
+
+
+
+
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
