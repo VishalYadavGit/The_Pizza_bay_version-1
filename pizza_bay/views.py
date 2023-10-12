@@ -4,6 +4,7 @@ from pizza_bay.models import *
 from django.contrib import messages
 from django.contrib.auth import login,authenticate,logout
 
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -69,6 +70,7 @@ def register_page(request):
 
     return render(request,'register.html')
 
+@login_required(login_url='login')
 def add_cart(request,pizza_uid):
     if request.user.is_authenticated:
         user=request.user
@@ -82,6 +84,7 @@ def add_cart(request,pizza_uid):
         return redirect('/')
     return redirect('login')
 
+@login_required(login_url='login')
 def cart(request):
     cart=Cart.objects.get(is_paid=False,user=request.user)
     context={'carts':cart}
@@ -95,6 +98,7 @@ def remove_cart_items(request,cart_item_uid):
     except Exception as e:
         print(e)
 
+@login_required(login_url='login')
 def address_ord(request):
     if(request.method=='POST'):
         try:
@@ -122,12 +126,15 @@ def address_ord(request):
 
     return render(request,'details.html')
 
+@login_required(login_url='login')
 def confirmation(request):
     return render(request,'confirmation.html')
+
 
 def signout(request):
     logout(request)
     return redirect('/')
+
 
 def takemail(request):
     if(request.method=='POST'):
