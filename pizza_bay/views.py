@@ -86,7 +86,7 @@ def add_cart(request,pizza_uid):
 
 @login_required(login_url='login')
 def cart(request):
-    cart=Cart.objects.get_or_create(is_paid=False,user=request.user)
+    cart=Cart.objects.get(is_paid=False,user=request.user)
     context={'carts':cart}
     return render(request,'cart.html',context)
 
