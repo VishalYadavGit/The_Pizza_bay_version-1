@@ -20,8 +20,8 @@ urlpatterns = [
     path('takemail',takemail,name='mail'),
     path('confirmation',confirmation,name='confirmation'),
     path('remove_cart_items/<cart_item_uid>',remove_cart_items,name='remove_cart_items'),
-    
-
+    path('proceed-to-pay',razorpaycheck,name="razorpaycheck"),
+    path('order_done',orderdone,name="order-done"),
     path('home',include('pizza_bay.urls')),
     path('about',include('pizza_bay.urls')),
     path('contact',include('pizza_bay.urls')),

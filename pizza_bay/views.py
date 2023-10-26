@@ -3,7 +3,7 @@ from django.shortcuts import render,redirect
 from pizza_bay.models import *
 from django.contrib import messages
 from django.contrib.auth import login,authenticate,logout
-
+from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -86,7 +86,7 @@ def add_cart(request,pizza_uid):
 
 @login_required(login_url='login')
 def cart(request):
-    cart=Cart.objects.get(is_paid=False,user=request.user)
+    cart=Cart.objects.get_or_create(is_paid=False,user=request.user)
     context={'carts':cart}
     return render(request,'cart.html',context)
 
@@ -100,6 +100,8 @@ def remove_cart_items(request,cart_item_uid):
 
 @login_required(login_url='login')
 def address_ord(request):
+    carttest=Cart.objects.get(is_paid=False,user=request.user)
+    
     if(request.method=='POST'):
         try:
             user=request.user
@@ -109,6 +111,7 @@ def address_ord(request):
             City=request.POST.get('city')
             State=request.POST.get('state')
             Zip=request.POST.get('zip')
+            payment_id=request.POST.get('order_id')
             # Address=request.POST.get('address')
             details.objects.create(
                 user=user,
@@ -117,13 +120,18 @@ def address_ord(request):
                 phone=Phone,
                 city=City,
                 state=State,
-                zip=Zip)
+                zip=Zip,
+                payment_id=payment_id)
+            cart=Cart.objects.get(user=request.user)
+            cart.is_paid=True
+            cart.save()
             return redirect('confirmation')
         except Exception as e:
             print('e')
             return redirect('details')
         
-
+    elif(Cart.get_cart_total(carttest)==None):
+         return redirect('/')
     return render(request,'details.html')
 
 @login_required(login_url='login')
@@ -145,3 +153,15 @@ def takemail(request):
         return redirect('/')
     
     return render(request,'contact.html')
+
+
+def razorpaycheck(request):
+    cart=Cart.objects.get(is_paid=False,user=request.user)
+    total_price=Cart.get_cart_total(cart)
+    print(total_price)
+    return JsonResponse({
+        'total_price':total_price
+    })
+
+def orderdone(request):
+    pass

@@ -41,6 +41,7 @@ class details(Basemodel):
      city=models.CharField(max_length=30)
      state=models.CharField(max_length=30)
      zip=models.IntegerField()
-
+     payment_id=models.CharField(max_length=100,default="Cash on delivery.",null=False,blank=False)
+    
 class newsletter(models.Model):
     email=models.EmailField(max_length=100)
