@@ -158,7 +158,7 @@ def takemail(request):
     
     return render(request,'contact.html')
 
-
+@login_required(login_url='login')
 def razorpaycheck(request):
     cart=Cart.objects.get(is_paid=False,user=request.user)
     total_price=Cart.get_cart_total(cart)
@@ -166,6 +166,7 @@ def razorpaycheck(request):
     return JsonResponse({
         'total_price':total_price
     })
+
 
 def orderdone(request):
     pass
