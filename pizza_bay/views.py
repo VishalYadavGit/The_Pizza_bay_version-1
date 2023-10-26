@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth import login,authenticate,logout
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 
 
@@ -86,7 +87,10 @@ def add_cart(request,pizza_uid):
 
 @login_required(login_url='login')
 def cart(request):
-    cart=Cart.objects.get(is_paid=False,user=request.user)
+    try:
+        cart = Cart.objects.get(is_paid=False, user=request.user)
+    except ObjectDoesNotExist:
+        cart = Cart.objects.create(user=request.user, is_paid=False)
     context={'carts':cart}
     return render(request,'cart.html',context)
 
@@ -122,16 +126,16 @@ def address_ord(request):
                 state=State,
                 zip=Zip,
                 payment_id=payment_id)
-            cart=Cart.objects.get(user=request.user)
+            cart=Cart.objects.get(user=request.user,is_paid=False)
             cart.is_paid=True
             cart.save()
             return redirect('confirmation')
         except Exception as e:
-            print('e')
+            print(e)
             return redirect('details')
         
-    elif(Cart.get_cart_total(carttest)==None):
-         return redirect('/')
+    if not carttest:
+        return redirect('/')
     return render(request,'details.html')
 
 @login_required(login_url='login')
