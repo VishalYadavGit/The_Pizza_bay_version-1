@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-#g)j4x2@^ce^dv(g-iy7e(gd8=3e)amum8((n5)e1epzf43ynk
 DEBUG = True
 
 ALLOWED_HOSTS = ['localhost','192.168.1.105','127.0.0.1',
-                 'the-pizza-site.onrender.com'
+                 'the-pizza-site.onrender.com','https://the-pizza-bay-version-1.vercel.app/',"the-pizza-bay-version-1.vercel.app"
                  ]
 
 
