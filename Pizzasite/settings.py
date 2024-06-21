@@ -88,7 +88,7 @@ DATABASES = {
         'NAME': 'ghnirazj',
         'USER': 'ghnirazj',
         'PASSWORD': 'Vn9QzorQOcYDubLn5GKlpcXe8byTlfn6',
-        'HOST': 'localhost', 
+        'HOST': 'isabelle.db.elephantsql.com', 
         'PORT': '5432', 
     }
 }
